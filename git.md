@@ -4,16 +4,24 @@
 
 1. [Overview](#overview)
 2. [Git Commands](#git-commands)
-   1. [init](#init)
-   2. [add](#add)
-   3. [commit](#commit)
-   4. [clone](#clone)
-   5. [status](#status)
-   6. [config](#config)
-   7. [push](#push)
-   8. [pull](#pull)
-   9. [remote](#remote)
-   10. [fetch](#fetch)
+   1. [Local Commands](#local-commands)
+      1. [version](#version)
+      2. [config](#config)
+      3. [status](#status)
+      4. [init](#init)
+      5. [add](#add)
+      6. [commit](#commit)
+      7. [log](#log)
+      8. [checkout](#checkout)
+      9. [branch](#branch)
+      10. [rebase](#rebase)
+   2. [Remote Commands](#remote-commands)
+      1. [clone](#clone)
+      2. [remote](#remote)
+      3. [pull](#pull)
+      4. [push](#push)
+      5. [merge](#merge)
+      6. [fetch](#fetch)
 3. [Working as a team](#working-as-a-team)
    1. [Github](#github)
    2. [Avoiding Conflicts](#avoiding-conflicts)
@@ -32,105 +40,201 @@
 
 ## Git Commands
 
-### init
+### Local commands
 
-The `git init` command is used for adding git to a project or folder. The command creates a new subdirectory named `.git` which contains all repository files.
+#### version
 
-#### Usage
+The `git version` command shows what version of git you're using.
 
-```sh
-git init <optional name>
-```
-
-### add
-
-The `git add` command is used for tracking a files changes, this is also called staging. The command accepts wildcards `*` in the files path allowing you to add multiple files at once. You can also add an entire directory and its contents using a relative such as `.` or `..`.
-
-#### Usage
+Usage:
 
 ```sh
-git add <path>
+git version
 ```
 
-### commit
+[Documentation](https://git-scm.com/docs/git#Documentation/git.txt---version)
 
-The `git commit` command is used for saving the tracked changes to the git repository. You can use the `-m <title>` argument for directly specifying a commit title. If ommitted it will just open your default text editr as specified in git and ask you to input a name or accept the default one, which is the name of a file you've edited.
-
-#### Usage
-
-```sh
-git commit [args]
-```
-
-### clone
-
-The `git clone` command is used for for downloading, cloning, an existing repository. You can use the `--branch <name>` argument to specify which branch of the repositroy it should clone.
-
-#### Usage
-
-```sh
-git clone <url> [args]
-```
-
-### status
-
-The `git status` command is used for displaying the current status of the repository. It will show files modified, removed or added files and if they're staged for commit.
-
-#### Usage
-
-```sh
-git status
-```
-
-### config
+#### config
 
 The `git config` command is used for changing a git setting. This can be done globally or done per repository (see the `--global` and `--local`) flags. Two common settings are the username and email which can be specified with `user.name` and `user.email` setting.
 
-#### Usage
+Usage:
 
 ```sh
 git config [--global, --local] <setting> <value>
 ```
 
-### push
+[Documentation](https://git-scm.com/docs/git-config)
 
-The `git push` command is used for sending commits stored in the local repository to the remote repository, for example Github.
+#### status
 
-#### Usage
+The `git status` command is used for displaying the current status of the repository. It will show files modified, removed or added files and if they're staged for commit.
 
-```sh
-git push <remote> <branch>
-```
-
-### pull
-
-The `git pull` command is used for fetching changes of the remote repository and then merging them with the existing changes in the local repository.
-
-#### Usage
+Usage:
 
 ```sh
-git pull <remote> <branch>
+git status
 ```
 
-### remote
+[Documentation](https://git-scm.com/docs/git-status)
+
+#### init
+
+The `git init` command is used for adding git to a project or folder. The command creates a new subdirectory named `.git` which contains all repository files.
+
+Usage:
+
+```sh
+git init <optional name>
+```
+
+[Documentation](https://git-scm.com/docs/git-init)
+
+#### add
+
+The `git add` command is used for tracking a files changes, this is also called staging. The command accepts wildcards `*` in the files path allowing you to add multiple files at once. You can also add an entire directory and its contents using a relative such as `.` or `..`.
+
+Usage:
+
+```sh
+git add <path>
+```
+
+[Documentation](https://git-scm.com/docs/git-add)
+
+#### commit
+
+The `git commit` command is used for saving the tracked changes to the git repository. You can use the `-m <title>` argument for directly specifying a commit title. If ommitted it will just open your default text editr as specified in git and ask you to input a name or accept the default one, which is the name of a file you've edited.
+
+Usage:
+
+```sh
+git commit [args]
+```
+
+[Documentation](https://git-scm.com/docs/git-commit)
+
+#### log
+
+The `git log` command is used for showing the log of commits.
+
+Usage:
+
+```sh
+git log
+```
+
+[Documentation](https://git-scm.com/docs/git-log)
+
+#### checkout
+
+The `git checkout` command is used for switching branch or restoring the files in the working directory to the latest commit. The `--branch <name>` argument specifies which branch to create, however if that branch already exists it will switch to that branch and reset.
+
+Usage:
+
+```sh
+git checkout [args]
+```
+
+[Documentation](https://git-scm.com/docs/git-checkout)
+
+#### branch
+
+The `git branch` command is used for listing, creating or deleting branches. Commonly used arguments are `--move`, `--copy`, `--delete` and `--list`.
+
+Usage:
+
+```sh
+git branch [args]
+```
+
+[Documentation](https://git-scm.com/docs/git-branch)
+
+#### rebase
+
+The `git rebase` command is used for moving commits on to the tip of another branch. This can be used for avoiding merge commits. The branch argument (as seen in usage) is the target branch that you want to rebase to. It's highly recommended to read the documentation page for visual demonstration as well as a list of all available arguments.
+
+Usage:
+
+```sh
+git rebase <branch>
+```
+
+[Documentation](https://git-scm.com/docs/git-rebase)
+
+### Remote commands
+
+#### clone
+
+The `git clone` command is used for for downloading, cloning, an existing repository. You can use the `--branch <name>` argument to specify which branch of the repositroy it should clone.
+
+Usage:
+
+```sh
+git clone <url> [args]
+```
+
+[Documentation](https://git-scm.com/docs/git-clone)
+
+#### remote
 
 The `git remote` command is used for viewing and specifying remote servers that host your git repository. If you've cloned a repository it will show a remote called `origin`, which is the server you cloned from.
 
-#### Usage
+Usage:
 
 ```sh
 git remote [add <name> <url>, remove <name>, rename <old name> <new name>]
 ```
 
-### fetch
+[Documentation](https://git-scm.com/docs/git-remote)
+
+#### pull
+
+The `git pull` command is used for fetching changes of the remote repository and then merging them with the existing changes in the local repository.
+
+Usage:
+
+```sh
+git pull <remote> <branch>
+```
+
+[Documentation](https://git-scm.com/docs/git-pull)
+
+#### push
+
+The `git push` command is used for sending commits stored in the local repository to the remote repository, for example Github.
+
+Usage:
+
+```sh
+git push <remote> <branch>
+```
+
+[Documentation](https://git-scm.com/docs/git-push)
+
+#### merge
+
+The `git merge` command is used for merging two commit histories. Unlike [rebase](#rebase) this does not move commits the the top, but instead creates a new commit with all the missing changes.
+
+Usage:
+
+```sh
+git merge <branch>
+```
+
+[Documentation](https://git-scm.com/docs/git-merge)
+
+#### fetch
 
 The `git fetch` command is used for fetching changes from the remote repository. You can merge this changes with your local ones at a later time. The `git pull` command will fetch and merge in one command.
 
-#### Usage
+Usage:
 
 ```sh
 git fetch <remote>
 ```
+
+[Documentation](https://git-scm.com/docs/git-fetch)
 
 ## Working as a team
 
@@ -177,7 +281,7 @@ Make sure you've fetched the latest information from the remote repository by us
 
 ### How do I keep my branch up to date?
 
-To update your branch you can rebase it, which means to put your commits on top of a remote branchs. You can do so with the [git pull](#pull) command and the rebase argument. See the [git pull](#pull) section for more information on how to rebase.
+To update your branch you can rebase it, which means to put your commits on top of a remote branchs. You can do so with the [git pull](#pull) or [git rebase](#rebase).
 
 ### How do I rename my last commit?
 
