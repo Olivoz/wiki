@@ -48,7 +48,7 @@ flowchart LR
     head-->|git checkout|work
     head-->|git config|head
     head-->|git log|head
-    head-->|git status|head
+    index-->|git status|index
     remote-->|git clone|head
     remote<-->|git branch|head
     work-->|git init|head
