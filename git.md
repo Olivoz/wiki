@@ -39,10 +39,19 @@
 ```mermaid
 flowchart LR
     work("Working directory")-->|git add|index("Staging Area (index)")
-    index-->|git commit|head("Repository (Head)")
-    head-->|git push|remote("Remote")
+    index-->|git commit|head("Local repository (Head)")
+    remote-->|git fetch|remote-ref("Remote Tracking Ref")
+    remote-ref-->|"git merge/rebase origin/{branch}"|work
+    head-->|"git merge/rebase {branch}"|work
+    head-->|git push|remote("Remote Branch")
     remote-->|git pull|head
     head-->|git checkout|work
+    head-->|git config|head
+    head-->|git log|head
+    head-->|git status|head
+    remote-->|git clone|head
+    remote<-->|git branch|head
+    work-->|git init|head
 ```
 
 ## Git Commands
