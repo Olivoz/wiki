@@ -36,7 +36,12 @@
 
 ## Overview
 
-![Overview](https://user-images.githubusercontent.com/48181323/212286657-c22de3e2-4061-48dd-922e-a3cecd74ce30.svg)
+flowchart LR
+    work("Working directory")-->|git add|index("Staging Area (index)")
+    index-->|git commit|head("Repository (Head)")
+    head-->|git push|remote("Remote")
+    remote-->|git pull|head
+    head-->|git checkout|work
 
 ## Git Commands
 
