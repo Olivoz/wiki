@@ -251,6 +251,28 @@ gh auth login
 gh auth setup-git
 ```
 
+### Login with SSH
+
+To avoid entering a username and password everytime you interact with a remote repo you can use something called a key pair. To generate and use your keys with github do the following:
+
+1. Open Git Bash (or the terminal if you're on a unix system)
+2. Create your key pair
+   1. Run `ssh-keygen -t ed25519 -C "Git ssh key: youremail@yourdomain.com`. The `-t` argument specifies the key type and `-C` is a comment
+   2. Give it a file name
+   3. Leave the passphrase blank
+   4. Leave the passphrase blank again
+   5. Done! It will have created two files one ending with .pub which is the public key and the other is the private key
+3. Start the ssh agent with `eval "$(ssh-agent -s)"`
+4. Run `ssh-add <file name or path to file>`. Make sure to use the private key, do **NOT** use the file that ends with .pub
+5. Adding public key to github
+   1. Open GitHub in your browser
+   2. Top right, select your profile photo and click Settings
+   3. In the menu on the left, look for Access and select "SSH and GPG keys"
+   4. Click New SSH Key
+   5. Paste the contents of the public key (`<file name>.pub`) in to the key area
+   6. Click Add SSH Key
+   7. Done!
+
 ### Avoiding conflicts
 
 A good way to avoid conflicts and keeping the code clean and structured is to split it in to multiple files. For example if you're working on a frontend application you can split commonly used components in to multiple files.
