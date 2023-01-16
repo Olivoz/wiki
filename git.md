@@ -36,12 +36,14 @@
 
 ## Overview
 
+```mermaid
 flowchart LR
     work("Working directory")-->|git add|index("Staging Area (index)")
     index-->|git commit|head("Repository (Head)")
     head-->|git push|remote("Remote")
     remote-->|git pull|head
     head-->|git checkout|work
+```
 
 ## Git Commands
 
