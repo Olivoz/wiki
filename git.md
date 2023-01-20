@@ -274,7 +274,7 @@ To avoid entering a username and password everytime you interact with a remote r
 
 1. Open Git Bash (or the terminal if you're on a unix system)
 2. Create your key pair
-   1. Run `ssh-keygen -t ed25519 -C "Git ssh key: youremail@yourdomain.com`. The `-t` argument specifies the key type and `-C` is a comment
+   1. Run `ssh-keygen -t ed25519 -C "youremail@yourdomain.com"`. The `-t` argument specifies the key type and `-C` is a comment
    2. Give it a file name
    3. Leave the passphrase blank
    4. Leave the passphrase blank again
